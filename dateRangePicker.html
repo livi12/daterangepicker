@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改后的daterangePicker</title>
+</head>
+<body>
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="daterangepicker.css">
+	<input type="text" id="demo" style="width:300px">
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
+	<script type="text/javascript" src="daterangepicker.js"></script>
+	<script type="text/javascript">
+		$('#demo').daterangepicker({ 
+		    "startDate": "02/08/2017",
+		    "endDate": "02/14/2017", 
+		    	"weeksranges":true,	//设置为true将周隐藏，设置为对象会覆盖默认值
+		    	"monthsranges":true ,	//设置为true将月隐藏，设置为对象会覆盖默认值
+		    	"singleDay":true ,		//选择日时，设置为true，只能选一天
+		    	"autoApply":true 		//选择完之后，自动将日历隐藏
+		}, function(start, end, label) {
+		  	console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+		});
+	</script>
+</body>
+</html>
