@@ -16,12 +16,13 @@
 		$('#demo').daterangepicker({ 
 		    "startDate": "02/08/2017",
 		    "endDate": "02/14/2017", 
-		    	"weeksranges":true,	//设置为true将周隐藏，设置为对象会覆盖默认值
-		    	"monthsranges":true ,	//设置为true将月隐藏，设置为对象会覆盖默认值
+		    //	"weeksranges":true,	//设置为true将周隐藏，设置为对象会覆盖默认值
+		    //	"monthsranges":true ,	//设置为true将月隐藏，设置为对象会覆盖默认值
 		    	"singleDay":true ,		//选择日时，设置为true，只能选一天
-		    	"autoApply":true 		//选择完之后，自动将日历隐藏
+		    //	"autoApply":true 		//选择完之后，自动将日历隐藏
 		}, function(start, end, label) {
-		  	console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+			console.log(label)
+		 // 	console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 		});
 	</script>
 </body>

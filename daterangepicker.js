@@ -91,7 +91,7 @@
             customRangeLabel: '自定义',
             daysOfWeek: moment.weekdaysMin(),
             monthNames: moment.monthsShort(),
-            firstDay: moment.localeData().firstDayOfWeek()
+            firstDay: moment.localeData().firstDayOfWeek()+1
         };
 
         this.callback = function() { };
@@ -786,7 +786,7 @@
             }
 
             //populate the calendar with date objects
-            var startDay = daysInLastMonth - dayOfWeek + this.locale.firstDay + 2;
+            var startDay = daysInLastMonth - dayOfWeek + this.locale.firstDay + 1;
             if (startDay > daysInLastMonth)
                 startDay -= 7;
 
@@ -1594,6 +1594,7 @@
             $(e.target).addClass('active').siblings().removeClass('active');
             $(e.target).closest('.ranges-type').siblings('.ranges-tab-content').children('ul').eq(idx).addClass('active').siblings('ul').removeClass('active');
             this.rangesType=idx==0?"ranges":idx==1?"weeksranges":"monthsranges";
+            this.chosenLabel = $('.ranges-tab-content ul.active li:last').html();
             if(idx==2){
                 $('.calendar').addClass('hide').siblings('.month-palette').removeClass('hide');
             }else{
@@ -1609,14 +1610,14 @@
                 if (this.timePicker) {
                     if (this.startDate.isSame(this.ranges[range][0]) && this.endDate.isSame(this.ranges[range][1])) {
                         customRange = false;
-                        this.chosenLabel = this.container.find('.ranges li:eq(' + i + ')').addClass('active').html();
+                        this.chosenLabel = this.container.find('.ranges ul.active li:eq(' + i + ')').addClass('active').html();
                         break;
                     }
                 } else {
                     //ignore times when comparing dates if time picker is not enabled
                     if (this.startDate.format('YYYY-MM-DD') == this.ranges[range][0].format('YYYY-MM-DD') && this.endDate.format('YYYY-MM-DD') == this.ranges[range][1].format('YYYY-MM-DD')) {
                         customRange = false;
-                        this.chosenLabel = this.container.find('.ranges li:eq(' + i + ')').addClass('active').html();
+                        this.chosenLabel = this.container.find('.ranges ul.active li:eq(' + i + ')').addClass('active').html();
                         break;
                     }
                 }

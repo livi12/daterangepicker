@@ -2800,7 +2800,7 @@
         return this._weekdaysShort[m.day()];
     }
 
-    var defaultLocaleWeekdaysMin = ['一','二','三','四','五','六','日',];
+    var defaultLocaleWeekdaysMin = ['日','一','二','三','四','五','六'];
     function localeWeekdaysMin (m) {
         return this._weekdaysMin[m.day()];
     }
