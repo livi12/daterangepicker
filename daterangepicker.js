@@ -1408,14 +1408,18 @@
         }, 
 
         chooseMonth:function(e){
-            var month =parseInt($(e.target).attr('data-month'));
+            var month =parseInt($(e.target).attr('data-month'))
+            $(e.target).closest('.table-condensed').find('td').removeClass('active').end().end().addClass('active');
             var year =parseInt($(e.target).parents('.month-palette').find('.year-show').text());
 
 
             this.setStartDate(moment([year,month,1]).clone());
 
             this.setEndDate(moment([year,month,moment([year, month]).daysInMonth()]).clone());
-            this.clickApply()
+            if (this.autoApply) {
+              this.calculateChosenLabel();
+              this.clickApply();
+            }
         },
 
         hoverDate: function(e) {
