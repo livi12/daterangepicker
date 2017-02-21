@@ -1554,8 +1554,13 @@
                     var second = this.timePickerSeconds ? parseInt(this.container.find('.left .secondselect').val(), 10) : 0;
                     date = date.clone().hour(hour).minute(minute).second(second);
                 }
-                this.setStartDate(moment(date).startOf('week').add(1,'days').clone());
-                this.setEndDate(moment(date).endOf('week').add(1,'days').clone());
+                if(moment(date).format('d')==0){
+                    this.setStartDate(moment(date).startOf('week').subtract(6,'days').clone());
+                    this.setEndDate(moment(date).clone());
+                }else{
+                    this.setStartDate(moment(date).startOf('week').add(1,'days').clone());
+                    this.setEndDate(moment(date).endOf('week').add(1,'days').clone());
+                }
                 if (this.autoApply) {
                   this.calculateChosenLabel();
                   this.clickApply();
